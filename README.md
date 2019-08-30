@@ -1,4 +1,4 @@
-<h1 align="center"><strong>Single Purpose Emitter</strong></h1>
+<h1 align="center"><strong>Node Event Emitter</strong></h1>
 
 [![Build Status](https://travis-ci.org/Hooked74/node-event-emitter.svg?branch=master)](https://travis-ci.org/Hooked74/node-event-emitter)
 ![npm](https://img.shields.io/npm/v/@hooked74/node-event-emitter)

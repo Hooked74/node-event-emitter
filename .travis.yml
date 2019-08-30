@@ -22,4 +22,4 @@ deploy:
   tag: next
   on:
     branch: master
-    repo: Hooked74/single-purpose-emitter
+    repo: Hooked74/node-event-emitter
