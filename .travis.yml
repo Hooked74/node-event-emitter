@@ -1,25 +1,25 @@
 dist: trusty
 language: node_js
 node_js:
-  - 12
+- 12
 cache:
   directories:
-    - node_modules
+  - node_modules
 install:
-  - npm ci
+- npm ci
 script:
-  - npm test
-  - npm i -g codecov
-  - codecov --token="$CODECOV_TOKEN"
+- npm test
+- npm i -g codecov
+- codecov --token="$CODECOV_TOKEN"
 before_deploy:
-  - npm run build
+- npm run build
 deploy:
   provider: npm
   email: novikovio74@gmail.com
   skip_cleanup: true
-  api_key:
-    secure: GjDNkLGxz0xLDj1kSOD6jwc4hCQ8CR4IawSqMeLrhEgOEOKC8UUTZ/ZfU5hWTSKLaYLqO/ABu5vtyl1IformxcSmWWjX7bOmXXSDn8/+ws++PnthiYk86fXv4pJiJV7PLkT9hByTKnPZCevFVspZch8Yfk0cGc3iQ3+MpQ7YUO/5o8+WJFlsfBADc91U4BCvzgDD444Idw6skwFyU7knMBh/7zLeSHXFB8WLVv2VW8Ah+h/51w3nmod98BMuBXzjH9vKnXj9NT3cZno2heStZx/kSioQ7axTTAhn0uuqZe/2A5VmXaIwXiRqIr4liyu+LOd2n1y6FYColJh6o6Uts6blUOVDDAMJexgPc77Pax0L3qZErSA/oGYv73Dqw5efQjBeY6uDBwD8jDun0Ydgijp+Sx1iFhmoIN1jiWBgp6O31qokT31LmUvQp20ZJ4qLpTZfQzd3KRdr5Ye0SO81l+O8U2rCMmCFwPFSV9nd/YmQ49C3/FHPKlZu1i/SZvvPcJDnYiXqBGSdWsWU9wbaitmekDsKrelyHhjG/9TUdNNTxe8vkghub6g0DtYPb3SZM74ySW9USaYQxu/8EAkL2GNy2gAYUFDjccbBijVUlgyuDBxcRamA1fHyD82gJxvPFjI7kPLkgaV79RinwFCbKLSM25z3Fh8vuolcU4fwH3E=
   tag: next
   on:
     branch: master
     repo: Hooked74/node-event-emitter
+  api_key:
+    secure: Ys/qBM2aFH/1VFEYEo+J3dBTt8Xm41TwBk5Vyt1kl9EAJ+DO7QBA0tTA5AE5ZVS5vQFm3xPF/2lS9LKf66743avBhUhxTwboA2bW38pGwDJSJ+srOa/5o1HpQrFGuRw4WFuGIFZ5WqWbRpeOmcx8+ZfIxloForPBEPXREb8I1+FQV6luqGyWIW8lnMcTTNieA9m2EIc8BVEc3f66I4Ar2ORYnnlNPWzVFRO4lEtfwaqSrVhagwOx8BVmQrysixo2eB9+wp6NB+cmZBc9IXUa6E6KIZ2hyujs0ekbSenYIaGVAbA/dbJr18y1BE7MMVpHDK86Dj7APSz826ZN+Nvspc4ewFuYN27iFzCcOcq0BgsMcQvf2GiB5pAV93H8tYSnJ3gh9KByF5dhaMKftdR5Td0/UgKm/0Fxez8W0avbPIQbZrdRHQbbUsGwsuBkSiwD5ctcLSA9RShLvISCk84eQW4BfnfdZUiHEenWNkbWv31WvdLKY3rQC5+lCYfc4TPu+RyE8l6+vMtOdXvuoA1W8zJHMbxoDInCwJdl9/f//GCeroMnRujGY4nso7Tuy8YydATX4PSAjur7fm5c9DWVt0SlQgHS2uxrA0NCVwEN+0gN1od9E+wMF1Gf6OmQyvMTujSm89Zf5AexfggQg17Gj2u3aIucgyNSwrZGcDwfr7w=
