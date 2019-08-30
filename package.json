@@ -1,0 +1,129 @@
+{
+  "name": "@hooked74/node-event-emitter",
+  "version": "1.0.0",
+  "description": "Event emitter for DOM nodes",
+  "scripts": {
+    "test": "cross-env CI=true react-scripts test --bail --colors --coverage",
+    "test:watch": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build:lib && npm run build:types && npm run prettier:types && npm run lint:types",
+    "build:lib": "cross-env NODE_ENV=production rollup -c",
+    "build:types": "node scripts/types.js",
+    "prettier": "prettier --write",
+    "prettier:types": "prettier --write \"dist/*.d.ts\"",
+    "lint": "tslint --fix -p tsconfig.json -c tslint.json",
+    "lint:types": "tslint --fix -p tsconfig.types.json -c tslint.compile.json dist/*.d.ts"
+  },
+  "keywords": [
+    "emitter",
+    "node",
+    "element",
+    "dom",
+    "dispatch",
+    "attach",
+    "detach"
+  ],
+  "sideEffects": false,
+  "author": "Igor Novikov <novikovio74@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "/dist"
+  ],
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  },
+  "main": "dist/node-event-emitter.cjs.js",
+  "module": "dist/node-event-emitter.esm.js",
+  "types": "dist/index.d.ts",
+  "jsnext:main": "dist/node-event-emitter.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hooked74/node-event-emitter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hooked74/node-event-emitter/issues"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.5.5",
+    "@hooked74/events-polyfill": "^1.0.4",
+    "@hooked74/single-purpose-emitter": "^1.0.9",
+    "react": "^16.9.0",
+    "react-beautiful-dnd": "^11.0.5",
+    "react-is": "^16.9.0",
+    "react-select": "^3.0.4",
+    "select": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-destructuring": "^7.5.0",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.17",
+    "babel-plugin-macros": "^2.6.1",
+    "chalk": "^2.4.2",
+    "cross-env": "^5.2.0",
+    "custom-tslint-formatters": "^2.4.0",
+    "dotenv": "^8.1.0",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2",
+    "react-scripts": "^3.0.1",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-size-snapshot": "^0.10.0",
+    "rollup-plugin-strip": "^1.2.2",
+    "rollup-plugin-tslint": "^0.2.2",
+    "rollup-plugin-uglify": "^6.0.2",
+    "simple-output": "^1.0.1",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-react": "^4.0.0",
+    "tslint-react-a11y": "^1.0.0",
+    "tslint-react-hooks": "^2.2.1",
+    "typescript": "^3.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run prettier",
+      "npm run lint",
+      "npm run test",
+      "git add"
+    ],
+    "*.{json,scss,css,md}": [
+      "npm run prettier",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

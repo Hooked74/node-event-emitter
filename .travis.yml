@@ -1,0 +1,25 @@
+dist: trusty
+language: node_js
+node_js:
+  - 12
+cache:
+  directories:
+    - node_modules
+install:
+  - npm ci
+script:
+  - npm test
+  - npm i -g codecov
+  - codecov --token="$CODECOV_TOKEN"
+before_deploy:
+  - npm run build
+deploy:
+  provider: npm
+  email: novikovio74@gmail.com
+  skip_cleanup: true
+  api_key:
+    secure: GjDNkLGxz0xLDj1kSOD6jwc4hCQ8CR4IawSqMeLrhEgOEOKC8UUTZ/ZfU5hWTSKLaYLqO/ABu5vtyl1IformxcSmWWjX7bOmXXSDn8/+ws++PnthiYk86fXv4pJiJV7PLkT9hByTKnPZCevFVspZch8Yfk0cGc3iQ3+MpQ7YUO/5o8+WJFlsfBADc91U4BCvzgDD444Idw6skwFyU7knMBh/7zLeSHXFB8WLVv2VW8Ah+h/51w3nmod98BMuBXzjH9vKnXj9NT3cZno2heStZx/kSioQ7axTTAhn0uuqZe/2A5VmXaIwXiRqIr4liyu+LOd2n1y6FYColJh6o6Uts6blUOVDDAMJexgPc77Pax0L3qZErSA/oGYv73Dqw5efQjBeY6uDBwD8jDun0Ydgijp+Sx1iFhmoIN1jiWBgp6O31qokT31LmUvQp20ZJ4qLpTZfQzd3KRdr5Ye0SO81l+O8U2rCMmCFwPFSV9nd/YmQ49C3/FHPKlZu1i/SZvvPcJDnYiXqBGSdWsWU9wbaitmekDsKrelyHhjG/9TUdNNTxe8vkghub6g0DtYPb3SZM74ySW9USaYQxu/8EAkL2GNy2gAYUFDjccbBijVUlgyuDBxcRamA1fHyD82gJxvPFjI7kPLkgaV79RinwFCbKLSM25z3Fh8vuolcU4fwH3E=
+  tag: next
+  on:
+    branch: master
+    repo: Hooked74/single-purpose-emitter

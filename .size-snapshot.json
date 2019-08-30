@@ -1,0 +1,31 @@
+{
+  "dist/node-event-emitter.cjs.js": {
+    "bundled": 15821,
+    "minified": 7569,
+    "gzipped": 2112
+  },
+  "dist/node-event-emitter.esm.js": {
+    "bundled": 15283,
+    "minified": 7153,
+    "gzipped": 2039,
+    "treeshaked": {
+      "rollup": {
+        "code": 806,
+        "import_statements": 800
+      },
+      "webpack": {
+        "code": 5806
+      }
+    }
+  },
+  "dist/node-event-emitter.js": {
+    "bundled": 114750,
+    "minified": 37539,
+    "gzipped": 12307
+  },
+  "dist/node-event-emitter.min.js": {
+    "bundled": 37323,
+    "minified": 37267,
+    "gzipped": 12395
+  }
+}
