@@ -4,6 +4,7 @@
 ![npm](https://img.shields.io/npm/v/@hooked74/node-event-emitter)
 ![Codecov](https://img.shields.io/codecov/c/github/hooked74/node-event-emitter?token=203907d891d1498e9910c58a0b720633)
 ![NPM](https://img.shields.io/npm/l/@hooked74/node-event-emitter)
+![Module Size](https://img.shields.io/badge/dynamic/json?color=success&label=module%20size&query=%24.module&url=https%3A%2F%2Fraw.githubusercontent.com%2FHooked74%2Fnode-event-emitter%2Fmaster%2F.size-snapshot.json)
 
 ## Table of contents
 
