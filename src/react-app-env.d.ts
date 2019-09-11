@@ -37,4 +37,4 @@ declare namespace NodeEventEmitterCommon {
   type DispatchOptions<D = any, EI extends EventInit = EventInit> = [D, EI] | [EI];
 }
 
-import NEEC = NodeEventEmitterCommon;
+import H74_NEEC = NodeEventEmitterCommon;

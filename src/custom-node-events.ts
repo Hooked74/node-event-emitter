@@ -1,6 +1,6 @@
 import NodeEventEmitter from ".";
 
-const eventHandlersMap: NEEC.EventHandlersMapMap = new Map();
+const eventHandlersMap: H74_NEEC.EventHandlersMapMap = new Map();
 
 function addMapByName(name: string): void {
   if (!eventHandlersMap.has(name)) {
@@ -8,9 +8,12 @@ function addMapByName(name: string): void {
   }
 }
 
-function existsHandlers(name: string, handler: NEEC.EventHandler): NEEC.EventHandlersMap | null {
+function existsHandlers(
+  name: string,
+  handler: H74_NEEC.EventHandler
+): H74_NEEC.EventHandlersMap | null {
   if (eventHandlersMap.has(name)) {
-    const handlersMap: NEEC.EventHandlersMap = eventHandlersMap.get(name);
+    const handlersMap: H74_NEEC.EventHandlersMap = eventHandlersMap.get(name);
 
     if (handlersMap.has(handler)) {
       return handlersMap;
@@ -20,23 +23,23 @@ function existsHandlers(name: string, handler: NEEC.EventHandler): NEEC.EventHan
   return null;
 }
 
-function attachPointerEventWrapper(names: string[]): NEEC.AttachEventHandler<NodeEventEmitter> {
+function attachPointerEventWrapper(names: string[]): H74_NEEC.AttachEventHandler<NodeEventEmitter> {
   return (
     emitter: NodeEventEmitter,
-    handler: NEEC.EventHandler,
+    handler: H74_NEEC.EventHandler,
     options: boolean | AddEventListenerOptions
   ): void => {
     addMapByName(names[0]);
 
-    const handlersMap: NEEC.EventHandlersMap = eventHandlersMap.get(names[0]);
+    const handlersMap: H74_NEEC.EventHandlersMap = eventHandlersMap.get(names[0]);
 
     if (!handlersMap.has(handler)) {
       let isTouch: boolean = false;
-      const touchHandler: NEEC.EventHandler = (e: Event) => {
+      const touchHandler: H74_NEEC.EventHandler = (e: Event) => {
         isTouch = true;
         handler(e);
       };
-      const mouseHandler: NEEC.EventHandler = (e: Event) => {
+      const mouseHandler: H74_NEEC.EventHandler = (e: Event) => {
         if (!isTouch) {
           handler(e);
         }
@@ -51,11 +54,11 @@ function attachPointerEventWrapper(names: string[]): NEEC.AttachEventHandler<Nod
   };
 }
 
-function detachPointerEventWrapper(names: string[]): NEEC.DetachEventHandler<NodeEventEmitter> {
-  return (emitter: NodeEventEmitter, handler: NEEC.EventHandler): void => {
-    const handlersMap: NEEC.EventHandlersMap = existsHandlers(names[0], handler);
+function detachPointerEventWrapper(names: string[]): H74_NEEC.DetachEventHandler<NodeEventEmitter> {
+  return (emitter: NodeEventEmitter, handler: H74_NEEC.EventHandler): void => {
+    const handlersMap: H74_NEEC.EventHandlersMap = existsHandlers(names[0], handler);
     if (handlersMap) {
-      const { touchHandler, mouseHandler }: NEEC.EventHandlers = handlersMap.get(handler);
+      const { touchHandler, mouseHandler }: H74_NEEC.EventHandlers = handlersMap.get(handler);
 
       emitter.off(names[1], touchHandler);
       emitter.off(names["PointerEvent" in window ? 0 : 2], mouseHandler);
@@ -66,29 +69,31 @@ function detachPointerEventWrapper(names: string[]): NEEC.DetachEventHandler<Nod
 }
 
 const pointerDownNames: string[] = ["pointerdown", "touchstart", "mousedown"];
-const pointerDown: NEEC.CustomNodeEvent<NodeEventEmitter> = {
+const pointerDown: H74_NEEC.CustomNodeEvent<NodeEventEmitter> = {
   off: detachPointerEventWrapper(pointerDownNames),
   on: attachPointerEventWrapper(pointerDownNames)
 };
 
 const pointerUpNames: string[] = ["pointerup", "touchend", "mouseup"];
-const pointerUp: NEEC.CustomNodeEvent<NodeEventEmitter> = {
+const pointerUp: H74_NEEC.CustomNodeEvent<NodeEventEmitter> = {
   off: detachPointerEventWrapper(pointerUpNames),
   on: attachPointerEventWrapper(pointerUpNames)
 };
 
 const pointerMoveNames: string[] = ["pointermove", "touchmove", "mousemove"];
-const pointerMove: NEEC.CustomNodeEvent<NodeEventEmitter> = {
+const pointerMove: H74_NEEC.CustomNodeEvent<NodeEventEmitter> = {
   off: detachPointerEventWrapper(pointerMoveNames),
   on: attachPointerEventWrapper(pointerMoveNames)
 };
 
 const tapName: string = "tap";
-const tap: NEEC.CustomNodeEvent<NodeEventEmitter> = {
-  off: (emitter: NodeEventEmitter, handler: NEEC.EventHandler) => {
-    const handlersMap: NEEC.EventHandlersMap = existsHandlers(tapName, handler);
+const tap: H74_NEEC.CustomNodeEvent<NodeEventEmitter> = {
+  off: (emitter: NodeEventEmitter, handler: H74_NEEC.EventHandler) => {
+    const handlersMap: H74_NEEC.EventHandlersMap = existsHandlers(tapName, handler);
     if (handlersMap) {
-      const { startTouch, endTouch, cancelTouch }: NEEC.EventHandlers = handlersMap.get(handler);
+      const { startTouch, endTouch, cancelTouch }: H74_NEEC.EventHandlers = handlersMap.get(
+        handler
+      );
       emitter.off("touchstart", startTouch);
       emitter.off("touchend", endTouch);
 
@@ -101,20 +106,20 @@ const tap: NEEC.CustomNodeEvent<NodeEventEmitter> = {
   },
   on: (
     emitter: NodeEventEmitter,
-    handler: NEEC.EventHandler,
+    handler: H74_NEEC.EventHandler,
     options: boolean | AddEventListenerOptions
   ) => {
     addMapByName(tapName);
 
-    const handlersMap: NEEC.EventHandlersMap = eventHandlersMap.get(tapName);
+    const handlersMap: H74_NEEC.EventHandlersMap = eventHandlersMap.get(tapName);
 
     if (!handlersMap.has(handler)) {
       let isTap: boolean = false;
-      const startTouch: NEEC.EventHandler = () => (isTap = true);
-      const endTouch: NEEC.EventHandler = (e: Event) => {
+      const startTouch: H74_NEEC.EventHandler = () => (isTap = true);
+      const endTouch: H74_NEEC.EventHandler = (e: Event) => {
         if (isTap) handler(e);
       };
-      const cancelTouch: NEEC.EventHandler = () => (isTap = false);
+      const cancelTouch: H74_NEEC.EventHandler = () => (isTap = false);
 
       handlersMap.set(handler, { startTouch, endTouch, cancelTouch });
 
@@ -129,11 +134,11 @@ const tap: NEEC.CustomNodeEvent<NodeEventEmitter> = {
 };
 
 const pointerTapName: string = "pointertap";
-const pointerTap: NEEC.CustomNodeEvent<NodeEventEmitter> = {
-  off: (emitter: NodeEventEmitter, handler: NEEC.EventHandler) => {
-    const handlersMap: NEEC.EventHandlersMap = existsHandlers(pointerTapName, handler);
+const pointerTap: H74_NEEC.CustomNodeEvent<NodeEventEmitter> = {
+  off: (emitter: NodeEventEmitter, handler: H74_NEEC.EventHandler) => {
+    const handlersMap: H74_NEEC.EventHandlersMap = existsHandlers(pointerTapName, handler);
     if (handlersMap) {
-      const { touchHandler, mouseHandler }: NEEC.EventHandlers = handlersMap.get(handler);
+      const { touchHandler, mouseHandler }: H74_NEEC.EventHandlers = handlersMap.get(handler);
 
       tap.off(emitter, touchHandler);
       emitter.off("click", mouseHandler);
@@ -143,19 +148,19 @@ const pointerTap: NEEC.CustomNodeEvent<NodeEventEmitter> = {
   },
   on: (
     emitter: NodeEventEmitter,
-    handler: NEEC.EventHandler,
+    handler: H74_NEEC.EventHandler,
     options: boolean | AddEventListenerOptions
   ) => {
     addMapByName(pointerTapName);
 
-    const handlersMap: NEEC.EventHandlersMap = eventHandlersMap.get(pointerTapName);
+    const handlersMap: H74_NEEC.EventHandlersMap = eventHandlersMap.get(pointerTapName);
     if (!handlersMap.has(handler)) {
       let isTouch: boolean = false;
-      const touchHandler: NEEC.EventHandler = (e: Event) => {
+      const touchHandler: H74_NEEC.EventHandler = (e: Event) => {
         isTouch = true;
         handler(e);
       };
-      const mouseHandler: NEEC.EventHandler = (e: Event) => {
+      const mouseHandler: H74_NEEC.EventHandler = (e: Event) => {
         if (!isTouch) {
           handler(e);
         }
