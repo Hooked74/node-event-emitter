@@ -1,23 +1,23 @@
 dist: trusty
 language: node_js
 node_js:
-- 12
+  - 12
 cache:
   directories:
-  - node_modules
+    - node_modules
 install:
-- npm ci
+  - npm ci
 script:
-- npm test
-- npm i -g codecov
-- codecov --token="$CODECOV_TOKEN"
+  - npm test
+  - npm i -g codecov
+  - codecov --token="$CODECOV_TOKEN"
 before_deploy:
-- npm run build
+  - npm run build
 deploy:
   provider: npm
   email: novikovio74@gmail.com
   skip_cleanup: true
-  tag: next
+  tag: latest
   on:
     branch: master
     repo: Hooked74/node-event-emitter
