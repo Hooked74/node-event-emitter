@@ -16,15 +16,15 @@ export default class NodeEventEmitter<N extends Node = Node> {
   public static readonly ENTER: string = "mouseenter"; // "pointerenter";
   public static readonly LEAVE: string = "mouseleave"; // "pointerleave";
 
-  protected customEvents: CustomNodeEvents<NodeEventEmitter> = CustomNodeEvents;
+  protected customEvents: NEEC.CustomNodeEvents<NodeEventEmitter> = CustomNodeEvents;
 
-  private listeners: EventListeners = {};
+  private listeners: NEEC.EventListeners = {};
 
   constructor(protected node: N) {}
 
   public on(
     name: string,
-    handler: EventHandler,
+    handler: NEEC.EventHandler,
     options?: boolean | AddEventListenerOptions
   ): void {
     if (name in this.customEvents) {
@@ -40,7 +40,7 @@ export default class NodeEventEmitter<N extends Node = Node> {
     }
   }
 
-  public off(name?: string, handler?: EventHandler): void {
+  public off(name?: string, handler?: NEEC.EventHandler): void {
     if (typeof name !== "undefined") {
       if (name in this.customEvents) {
         this.customEvents[name].off(this, handler);
@@ -58,10 +58,10 @@ export default class NodeEventEmitter<N extends Node = Node> {
 
   public once(
     name: string,
-    handler: EventHandler,
+    handler: NEEC.EventHandler,
     options?: boolean | AddEventListenerOptions
   ): void {
-    const wrapper: EventHandler = (e: Event) => {
+    const wrapper: NEEC.EventHandler = (e: Event) => {
       this.off(name, wrapper);
       handler(e);
     };
@@ -158,7 +158,7 @@ export default class NodeEventEmitter<N extends Node = Node> {
     this.dispatch(name, new PointerEvent(name, options), options);
   }
 
-  private removeListener(name: string, handler: EventHandler): void {
+  private removeListener(name: string, handler: NEEC.EventHandler): void {
     this.listeners[name].delete(handler);
     this.node.removeEventListener(name, handler);
   }
@@ -178,7 +178,7 @@ export default class NodeEventEmitter<N extends Node = Node> {
   private dispatch<E extends Event, D, EI>(
     name: string,
     event: E,
-    ...args: DispatchOptions<D, EI>
+    ...args: NEEC.DispatchOptions<D, EI>
   ): void {
     if (this.customEvents[name] && this.customEvents[name].emit) {
       this.customEvents[name].emit(this, ...args);

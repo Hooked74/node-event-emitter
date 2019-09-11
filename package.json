@@ -1,11 +1,11 @@
 {
   "name": "@hooked74/node-event-emitter",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Event emitter for DOM nodes",
   "scripts": {
     "test": "cross-env CI=true react-scripts test --bail --colors --coverage",
+    "test:staged": "cross-env CI=true react-scripts test --bail --colors --passWithNoTests --findRelatedTests",
     "test:watch": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage",
     "clean": "rimraf dist",
     "build": "npm run clean && npm run build:lib && npm run build:types && npm run build:size",
     "build:lib": "cross-env NODE_ENV=production rollup -c",
@@ -108,13 +108,13 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run prettier",
-      "npm run lint",
-      "npm run test",
+      "npm run prettier --",
+      "npm run lint --",
+      "npm run test:staged --",
       "git add"
     ],
     "*.{json,scss,css,md}": [
-      "npm run prettier",
+      "npm run prettier --",
       "git add"
     ]
   },
