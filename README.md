@@ -1,10 +1,11 @@
 <h1 align="center"><strong>Node Event Emitter</strong></h1>
 
 [![Build Status](https://travis-ci.org/Hooked74/node-event-emitter.svg?branch=master)](https://travis-ci.org/Hooked74/node-event-emitter)
-![npm](https://img.shields.io/npm/v/@hooked74/node-event-emitter)
-![Codecov](https://img.shields.io/codecov/c/github/hooked74/node-event-emitter?token=203907d891d1498e9910c58a0b720633)
-![NPM](https://img.shields.io/npm/l/@hooked74/node-event-emitter)
-![Module Size](https://img.shields.io/badge/dynamic/json?color=success&label=module%20size&query=%24.module&url=https%3A%2F%2Fraw.githubusercontent.com%2FHooked74%2Fnode-event-emitter%2Fmaster%2F.size-snapshot.json)
+[![npm](https://img.shields.io/npm/v/@hooked74/node-event-emitter)](https://www.npmjs.com/package/@hooked74/node-event-emitter)
+[![License](https://img.shields.io/npm/l/@hooked74/node-event-emitter)](https://github.com/Hooked74/node-event-emitter/blob/master/LICENSE)
+[![Codecov](https://img.shields.io/codecov/c/github/hooked74/node-event-emitter?token=203907d891d1498e9910c58a0b720633)](https://codecov.io/gh/Hooked74/node-event-emitter)
+[![Module Size](https://img.shields.io/badge/dynamic/json?color=success&label=module%20size&query=%24.module&url=https%3A%2F%2Fraw.githubusercontent.com%2FHooked74%2Fnode-event-emitter%2Fmaster%2F.size-snapshot.json)](https://github.com/Hooked74/node-event-emitter/blob/master/.size-snapshot.json)
+
 
 ## Table of contents
 
