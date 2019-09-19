@@ -1,11 +1,11 @@
 {
   "dist/node-event-emitter.cjs.js": {
-    "bundled": 15806,
+    "bundled": 15894,
     "minified": 7579,
     "gzipped": 2110
   },
   "dist/node-event-emitter.esm.js": {
-    "bundled": 15248,
+    "bundled": 15336,
     "minified": 7143,
     "gzipped": 2035,
     "treeshaked": {
@@ -19,14 +19,14 @@
     }
   },
   "dist/node-event-emitter.js": {
-    "bundled": 114734,
+    "bundled": 114822,
     "minified": 37535,
     "gzipped": 12305
   },
   "dist/node-event-emitter.min.js": {
-    "bundled": 114810,
-    "minified": 37590,
-    "gzipped": 12322
+    "bundled": 37407,
+    "minified": 37263,
+    "gzipped": 12391
   },
   "module": "2.06 kB"
 }

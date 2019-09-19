@@ -8,11 +8,15 @@ import resolve from "rollup-plugin-node-resolve";
 import { uglify } from "rollup-plugin-uglify";
 import strip from "rollup-plugin-strip";
 import { sizeSnapshot } from "rollup-plugin-size-snapshot";
+import license from "rollup-plugin-license";
 
 import pkg from "./package.json";
 
 const input = "./src/index.ts";
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
+const banner = {
+  banner: `Copyright ${new Date().toDateString()}\nv${pkg.version} by ${pkg.author}`
+};
 
 // Treat as externals all not relative and not absolute paths
 // e.g. 'react'
@@ -57,6 +61,7 @@ export default [
       }),
       commonjs(commonjsArgs),
       babel(getBabelOptions({ useESModules: true })),
+      license(banner),
       sizeSnapshot()
     ],
     treeshake: false
@@ -77,8 +82,9 @@ export default [
       resolve({ extensions }),
       commonjs(commonjsArgs),
       strip({ debugger: true }),
-      sizeSnapshot(),
-      uglify()
+      uglify(),
+      license(banner),
+      sizeSnapshot()
     ],
     treeshake: false
   },
@@ -95,6 +101,7 @@ export default [
       resolve({ extensions }),
       commonjs(commonjsArgs),
       babel(getBabelOptions({ useESModules: false })),
+      license(banner),
       sizeSnapshot()
     ]
   },
@@ -111,6 +118,7 @@ export default [
       resolve({ extensions }),
       commonjs(commonjsArgs),
       babel(getBabelOptions({ useESModules: true })),
+      license(banner),
       sizeSnapshot()
     ]
   }
