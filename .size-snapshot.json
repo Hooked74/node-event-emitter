@@ -19,14 +19,14 @@
     }
   },
   "dist/node-event-emitter.js": {
-    "bundled": 114822,
-    "minified": 37535,
-    "gzipped": 12305
+    "bundled": 115389,
+    "minified": 37579,
+    "gzipped": 12316
   },
   "dist/node-event-emitter.min.js": {
-    "bundled": 37407,
-    "minified": 37263,
-    "gzipped": 12391
+    "bundled": 37468,
+    "minified": 37324,
+    "gzipped": 12407
   },
   "module": "2.06 kB"
 }
