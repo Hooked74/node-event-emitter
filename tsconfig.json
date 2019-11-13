@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "skipLibCheck": true,
     "module": "esnext",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -28,8 +27,10 @@
     "moduleResolution": "node",
     "downlevelIteration": true,
     "isolatedModules": true,
+    "strictFunctionTypes": true,
     "noEmit": true,
-    "strict": false
+    "strict": false,
+    "typeRoots": ["node_modules/@types", "node_modules/@h74-types", "./typings"]
   },
   "include": ["src"]
 }

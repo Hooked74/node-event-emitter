@@ -1,6 +1,6 @@
 {
   "name": "@hooked74/node-event-emitter",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Event emitter for DOM nodes",
   "scripts": {
     "test": "cross-env CI=true project-tools test --bail --colors --coverage --passWithNoTests",
@@ -29,7 +29,8 @@
   "author": "Igor Novikov <novikovio74@gmail.com>",
   "license": "MIT",
   "files": [
-    "/dist"
+    "/dist",
+    "tsconfig.json"
   ],
   "engines": {
     "node": ">=10",
@@ -47,31 +48,32 @@
     "url": "https://github.com/Hooked74/node-event-emitter/issues"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.6.3",
+    "@babel/runtime-corejs3": "^7.7.2",
+    "@h74-types/general": "^1.0.4",
     "@hooked74/events-polyfill": "^1.0.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-decorators": "^7.7.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-destructuring": "^7.6.0",
     "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
-    "@babel/preset-typescript": "^7.6.0",
-    "@hooked74/project-tools": "^1.2.9",
-    "@types/jest": "^24.0.19",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@babel/preset-typescript": "^7.7.2",
+    "@hooked74/project-tools": "^1.2.13",
+    "@types/jest": "^24.0.23",
     "babel-plugin-macros": "^2.6.1",
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "cross-env": "^6.0.3",
     "custom-tslint-formatters": "^2.4.0",
     "dotenv": "^8.2.0",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
-    "rollup": "^1.25.2",
+    "rollup": "^1.27.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-license": "^0.12.1",
@@ -81,13 +83,13 @@
     "rollup-plugin-tslint": "^0.2.2",
     "rollup-plugin-uglify": "^6.0.3",
     "simple-output": "^2.0.0",
-    "tslint": "^5.20.0",
+    "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-loader": "^3.5.4",
     "tslint-react": "^4.1.0",
     "tslint-react-a11y": "^1.1.0",
     "tslint-react-hooks": "^2.2.1",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
   },
   "browserslist": {
     "production": [
